@@ -56,7 +56,7 @@
       });
 
       const result = await res.json();
-      document.getElementById('mensaje').textContent = result.success ? 'Usuario registrado 🎉' : result.error;
+      document.getElementById('mensaje').textContent = result.success ? 'Usuario ingresado exitosamente 🎉' : result.error;
     }
 
     async function login() {

@@ -13,9 +13,18 @@ app.use('/api', authRoutes); // Ahora /api/login funcionará
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(3000, () => {
-  console.log('Servidor escuchando en http://localhost:3000');
+//app.listen(3000, () => {
+//console.log('Servidor escuchando en http://localhost:3000');
+//});
+
+//const PORT = process.env.PORT || 3000;
+ 
+const PORT = process.env.PORT;
+
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
+
 
 app.get('/test-supabase', async (req, res) => {
   try {

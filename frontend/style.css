@@ -1,0 +1,66 @@
+body {
+  background-color: #121212;
+  color: #eee;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: #1e1e2f;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #9a00ff;
+  width: 300px;
+  text-align: center;
+}
+
+h1 {
+  color: #9a00ff;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
+  background-color: #2a2a3b;
+  color: white;
+}
+
+button {
+  background-color: #9a00ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #c92eff;
+}
+
+label {
+  display: block;
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.habit-list {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+#mensaje {
+  margin-top: 10px;
+  color: #6aff6a;
+  font-weight: bold;
+}

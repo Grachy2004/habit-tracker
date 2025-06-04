@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Iniciar sesión / Registro</title>
+  <style>
+    body {
+      background-color: #1e1e2f;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      padding-top: 60px;
+    }
+    h2 {
+      color: #a569bd;
+    }
+    input {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 250px;
+      border: none;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #6c3483;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #884ea0;
+    }
+  </style>
+</head>
+<body>
+  <h2>Bienvenido</h2>
+  <input type="email" id="email" placeholder="Correo electrónico" />
+  <input type="password" id="password" placeholder="Contraseña" />
+  <button onclick="register()">Registrarse</button>
+  <button onclick="login()">Iniciar sesión</button>
+
+  <p id="mensaje"></p>
+
+  <script>
+    async function register() {
+     const email = document.getElementById('email').value.trim().toLowerCase();
+     const password = document.getElementById('password').value.trim();
+      const res = await fetch('http://localhost:3000/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      const result = await res.json();
+      document.getElementById('mensaje').textContent = result.success ? 'Usuario registrado 🎉' : result.error;
+    }
+
+    async function login() {
+      const email = document.getElementById('email').value.trim().toLowerCase();
+     const password = document.getElementById('password').value.trim();
+
+      const res = await fetch('http://localhost:3000/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      const result = await res.json();
+      if (result.success) {
+        localStorage.setItem('user_id', result.user.id);
+        document.getElementById('mensaje').textContent = 'Ingreso exitoso ✅';
+        // Aquí redirigimos a los hábitos
+        setTimeout(() => window.location.href = 'index.html', 1000);
+      } else {
+        Sdocument.getElementById('mensaje').textContent = result.message || 'Ocurrió un error';
+
+      }
+    }
+  </script>
+</body>
+</html>

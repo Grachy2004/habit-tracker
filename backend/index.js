@@ -1,6 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
+
 
 const authRoutes = require('./routes/auth');
 const supabase = require('./supabase');
@@ -15,6 +16,11 @@ app.use(express.static(path.join(__dirname, 'public')));
  
 //const PORT = process.env.PORT;
 const PORT = process.env.PORT || 8080;
+///
+console.log("SUPABASE_URL:", process.env.SUPABASE_URL);
+console.log("SUPABASE_KEY:", process.env.SUPABASE_KEY ? "OK" : "Falta");
+///
+
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });

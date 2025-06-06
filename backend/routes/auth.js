@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createClient } = require('@supabase/supabase-js');
-require('dotenv').config();
-
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+const supabase = require('../supabase'); // ✅ Usa el cliente de supabase.js
 
 // Registro
 router.post('/register', async (req, res) => {
@@ -29,7 +26,7 @@ router.post('/login', async (req, res) => {
     .from('users')
     .select('*')
     .eq('email', email)
-    .eq('password', password) // Solo si no usas hash
+    .eq('password', password)
     .single();
 
   if (error || !data) {
@@ -39,5 +36,4 @@ router.post('/login', async (req, res) => {
   res.json({ success: true, user: data });
 });
 
-// ✅ Esta línea debe ir al final, después de definir todas las rutas
 module.exports = router;

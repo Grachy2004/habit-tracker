@@ -1,4 +1,4 @@
-//require('dotenv').config(); // asegúrate de que esto esté aquí
+require('dotenv').config(); // asegúrate de que esto esté aquí
 require('dotenv').config({ path: './.env' }); // CORRECTO para tu caso
 
 const { createClient } = require('@supabase/supabase-js');

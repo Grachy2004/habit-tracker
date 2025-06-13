@@ -22,8 +22,8 @@ console.log("SUPABASE_KEY:", process.env.SUPABASE_KEY ? "OK" : "Falta");
 ///
  
 
-// Esto es intencionadamente vulnerable para demostrar a SonarQube
-eval("console.log('ejecutado con eval')"); // ❌ Esto es inseguro
+// Esto es una variable sin usar (code smell, Sonar Qube lo marcará).
+const variableSinUsar = 42;
 
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);

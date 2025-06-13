@@ -11,4 +11,4 @@ COPY backend/ .
 EXPOSE 8080
 CMD ["node", "index.js"]
 
-COPY .env .env
+#COPY .env .env
